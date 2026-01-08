@@ -100,7 +100,9 @@ To create python file which continuously reads and writes in text file and to cr
 and to create volume for that container and after deleting that container,new containers will run the existing volume:
 
 Created python file in this directory "/var/www/project2/app.py"
-app.py 
+
+ app.py 
+ 
   "import time
    from datetime import datetime
 
@@ -120,12 +122,14 @@ This python file reads the statement and will write in text file at every 5 seco
 
 Created Docker image - For creating docker image, need to create Dockerfile
 
-Dockerfile:
- "FROM python:3.11-slim
-  WORKDIR /app
-  COPY . .
-  EXPOSE 80
-  ENTRYPOINT ["python", "app.py"]"
+ Dockerfile:
+  
+  "FROM python:3.11-slim
+   WORKDIR /app
+   COPY . .
+   EXPOSE 80
+   ENTRYPOINT ["python", "app.py"]"
+
 Builed docker image using "docker build -t project2 ."
 
 Created volume using "docker create --name project2 -v project2_container project2"
