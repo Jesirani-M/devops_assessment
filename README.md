@@ -104,14 +104,19 @@ Created python file in this directory "/var/www/project2/app.py"
  app.py 
  
   "import time
+   
    from datetime import datetime
 
    FILE_PATH = "/app/data/log.txt"
 
    while True:
+   
     with open(FILE_PATH, "a") as f:
+    
         f.write(f"Log entry at {datetime.now()}\n")
+    
     print("Appended a new line")
+    
     time.sleep(5)"
 
 We can run this file using "python3 app.py" command
@@ -125,9 +130,13 @@ Created Docker image - For creating docker image, need to create Dockerfile
  Dockerfile:
   
   "FROM python:3.11-slim
+  
    WORKDIR /app
+   
    COPY . .
+   
    EXPOSE 80
+   
    ENTRYPOINT ["python", "app.py"]"
 
 Builed docker image using "docker build -t project2 ."
