@@ -127,17 +127,17 @@ This python file reads the statement and will write in text file at every 5 seco
 
 Created Docker image - For creating docker image, need to create Dockerfile
 
- Dockerfile:
+  Dockerfile:
   
-  "FROM python:3.11-slim
+   "FROM python:3.11-slim
   
-   WORKDIR /app
+    WORKDIR /app
    
-   COPY . .
+    COPY . .
    
-   EXPOSE 80
+    EXPOSE 80
    
-   ENTRYPOINT ["python", "app.py"]"
+    ENTRYPOINT ["python", "app.py"]"
 
 Builed docker image using "docker build -t project2 ."
 
