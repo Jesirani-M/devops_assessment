@@ -98,6 +98,7 @@ Project2
 
 To create python file which continuously reads and writes in text file and to create image and container for that file
 and to create volume for that container and after deleting that container,new containers will run the existing volume:
+
 Created python file in this directory "/var/www/project2/app.py"
 app.py 
   "import time
@@ -110,45 +111,70 @@ app.py
         f.write(f"Log entry at {datetime.now()}\n")
     print("Appended a new line")
     time.sleep(5)"
+
 We can run this file using "python3 app.py" command
+
 This python file reads the output and writes the print statement in log.txt.It itself creates and writes the statement in log.txt file when i create "data" folder.
+
 This python file reads the statement and will write in text file at every 5 seconds
+
 Created Docker image - For creating docker image, need to create Dockerfile
+
 Dockerfile:
-"FROM python:3.11-slim
- WORKDIR /app
- COPY . .
- EXPOSE 80
- ENTRYPOINT ["python", "app.py"]"
- Builed docker image using "docker build -t project2 ."
- Created volume using "docker create --name project2 -v project2_container project2"
- Created container and volume using "docker run --name project2 -v project2_volume project2"
- Container name - project2
- Image name - project2
- Volume name - project2_volume
- Volume file stored in this directory "/var/lib/docker/volumes/project2_volume"
- Need to copy the folder in this volume path using "docker cp /var/www/project2 project2:/project2" - It will copy the project2 folder path to the volume 
- Now I can have this project2 data in volume eventhough the container is deleted
- Deleting the running container using "docker rm -f project2"
- Creating new container and running this container with existing volume i.e project2_volume using "docker run --name project2_new_container -v project2_volume project2"
+ "FROM python:3.11-slim
+  WORKDIR /app
+  COPY . .
+  EXPOSE 80
+  ENTRYPOINT ["python", "app.py"]"
+Builed docker image using "docker build -t project2 ."
+
+Created volume using "docker create --name project2 -v project2_container project2"
+
+Created container and volume using "docker run --name project2 -v project2_volume project2"
+Container name - project2
+Image name - project2
+Volume name - project2_volume
+Volume file stored in this directory "/var/lib/docker/volumes/project2_volume"
+
+Need to copy the folder in this volume path using "docker cp /var/www/project2 project2:/project2" - It will copy the project2 folder path to the volume 
+ 
+Now I can have this project2 data in volume eventhough the container is deleted
+
+Deleting the running container using "docker rm -f project2"
+
+Creating new container and running this container with existing volume i.e project2_volume using "docker run --name project2_new_container -v project2_volume project2"
+
 Docker to Docker Hub:
-pushed the image to docker hub using "docker tag project2 ranimariyasusai/project2:v1"
+
+ Pushed the image to docker hub using "docker tag project2 ranimariyasusai/project2:v1"
 "docker push ranimariyasusai/project2:v1"
+
 Github:
-Uploaded this project2 folder to Windows and pushed this file to Github repository
+ Uploaded this project2 folder to Windows and pushed this file to Github repository
+
 Proof:
+
 Creating volume:
+
 <img width="1134" height="73" alt="image" src="https://github.com/user-attachments/assets/2966955b-3f47-4e8d-b968-728e63509811" />
+
 Running container with volume and Running new container with existing volume: 
+
  <img width="1279" height="392" alt="image" src="https://github.com/user-attachments/assets/0c0d40ab-8a9f-47e8-8463-4961ad83b777" />
+
 Removing existing container:
 <img width="684" height="101" alt="image" src="https://github.com/user-attachments/assets/2b4b056b-bde0-4091-a4d5-75c5e0d40761" />
+
 Output when running container will displayed in log.txt file:
 <img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/81d755e2-50eb-443d-a760-d05f24c7146d" />
 <img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/4bcdb180-0d45-4a52-b64b-374b1e3dc3b4" />
+
 Docker to DockerHub:
+
 <img width="1178" height="441" alt="image" src="https://github.com/user-attachments/assets/9cc649ff-8b84-4b29-aec8-c16c5c6dbb2a" />
+
 Pushing project2 folder to Github repository:
+
 <img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/bcee6a67-c702-4a4a-aaa8-365cf1154335" />
 
 
