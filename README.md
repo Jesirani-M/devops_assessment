@@ -177,6 +177,11 @@ Pushing project2 folder to Github repository:
 
 <img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/bcee6a67-c702-4a4a-aaa8-365cf1154335" />
 
+Logs of container:
+
+<img width="912" height="251" alt="image" src="https://github.com/user-attachments/assets/11878640-a8d8-4674-bd04-c3a9632a27f0" />
+
+
 
 
 
