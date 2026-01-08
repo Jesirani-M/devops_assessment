@@ -195,6 +195,85 @@ Logs of container:
 <img width="912" height="251" alt="image" src="https://github.com/user-attachments/assets/11878640-a8d8-4674-bd04-c3a9632a27f0" />
 
 
+Project3
+
+Architect a system where two distinct containers communicate with each other 
+over a private network using service discovery (DNS), rather than IP addresses. 
+
+Created folder as "redis_project",Inside that created one folder "redis-cli" and another one as "redis-server"
+Created Dockerfile for "redis-cli"
+
+"FROM redis:alpine
+ 
+ ENTRYPOINT ["redis-cli"]"
+
+ Created Dockerfile for "redis-server"
+
+" FROM redis:latest
+  
+  LABEL maintainer="I am Rani"
+  
+  LABEL description="Redis server containerized "
+
+Built image for both folders - "docker build -t redis_cli_image ." and "docker build -t redis_server_image . " 
+
+Running container for that corresponding image using "docker run --name redis-cli-container redis_cli_image" and "docker run --name redis-server-container redis_server_image"
+
+When i run this following command,2 container can communicate each other "docker exec -it redis-cli-container redis-cli -h redis-server-container"
+
+It will open another shell ,when I give ping ,It will repond Pong which means two container can communicate each other.
+
+Docker-Compose:
+
+Created "docker-compose.yml " file in "redis_project" folder
+
+docker-compose.yml:
+
+version: "3.9"
+
+services:
+
+  redis-server-container:
+  
+    image: redis_server_image:latest
+    
+    container_name: redis-server-container
+    
+    networks:
+    
+      - redis-net
+  
+  redis-cli-container:
+  
+    image: redis_cli_image:latest
+    
+    container_name: redis-cli-container
+    
+    depends_on:
+      - redis-server-container
+    
+    networks:
+    
+      - redis-net
+    
+    entrypoint: ["sleep"]
+    
+    command: ["infinity"]
+    
+    tty: true
+    
+    stdin_open: true
+
+networks:
+
+  redis-net:
+  
+    driver: bridge
+
+
+
+
+
 
 
 
