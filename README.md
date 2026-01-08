@@ -270,6 +270,31 @@ networks:
   
     driver: bridge
 
+To start the docker-compose , need to stop and delete the existing containers using "docker rm -f redis_cli_container" and "docker rm -f redis_server_container"
+Start the docker-compose using "docker-compose up -d"
+Start this container using "docker exec -it redis-cli-container redis-cli -h redis-server-container".
+
+Docker to Docker Hub:
+pushed 2 images to docker hub
+
+Github:
+pushed this folder to Github repository
+
+Proof:
+
+Connection between 2 containers:
+
+<img width="1618" height="260" alt="Screenshot 2026-01-08 154853" src="https://github.com/user-attachments/assets/aa51e207-6a5c-4748-a01f-6b90d90ce319" />
+
+After docker-compose ,connection is
+
+<img width="1339" height="199" alt="image" src="https://github.com/user-attachments/assets/365f8df1-ecc2-45ec-82a6-529b9f7aeecc" />
+
+Github repository
+
+<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/028aae65-cb56-434c-b8fc-516cc04bd1ce" />
+
+
 
 
 
